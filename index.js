@@ -370,7 +370,7 @@ app.get("/:user", async (req, res) => {
         </g>
       </svg>`;
         res.header("Content-Type", "image/svg+xml");
-        res.status(201).send(svg);
+        res.status(200).send(svg);
       })
       .catch((error) => {
         res.status(404).send({ message: "Something went wrong", error });
