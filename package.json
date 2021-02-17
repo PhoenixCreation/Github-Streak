@@ -1,0 +1,29 @@
+{
+  "name": "git-streak",
+  "version": "1.0.0",
+  "description": "A simple api that will give you a beautiful github contribution streak information.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "streak",
+    "contribution"
+  ],
+  "author": "PhoenixCreation",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-html-parser": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
