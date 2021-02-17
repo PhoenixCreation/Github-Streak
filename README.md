@@ -14,7 +14,13 @@ A node based API that generates your Github contribution streak. It also shows t
 
 ## Live API
 
-I will add this soon
+To quickly add this to your readme just add this code
+
+```
+<img src="https://github-streak.herokuapp.com/{YOUR_GITHUB_USERNAME}" alt="Your name" />
+```
+
+Although I will still suggest custom hosting as this is hosted with free heroku service and can stop working specially after 23 days of the month.(why 23? Ask me somewhere...)
 
 #
 
@@ -39,6 +45,13 @@ npm start
 
 #
 
+## Limitations
+
+- This only counts stats from last 2 years. If your streak is greater than 2 years, "STOP IT. GET SOME HELP."
+- This stats are scraped from github page directly so if they change something, this can break. In this case contact me.
+
+#
+
 ## Creator
 
 - [PhoenixCreation](https://github.com/PhoenixCreation)
@@ -50,6 +63,14 @@ npm start
 
 - Always welcome
 - Don't waste time in issue... create a pull request directly if you can fix it.
+
+#
+
+## TODO
+
+- add custom theme support
+- add PR/ISSUE counter
+- Make it for whole lifetime rather then 2 years
 
 #
 
