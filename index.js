@@ -369,6 +369,7 @@ app.get("/:user", async (req, res) => {
           </g>
         </g>
       </svg>`;
+        res.header("Content-Type", "image/svg+xml");
         res.status(201).send(svg);
       })
       .catch((error) => {
