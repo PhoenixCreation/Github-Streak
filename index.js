@@ -181,6 +181,12 @@ app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
 );
 
+app.get("", (req, res) => {
+  res.send(
+    "Add your Github username after url like https://github-streak.herokuapp.com/{YOUR_GITHUB_USERNAME}"
+  );
+});
+
 app.get("/:user", async (req, res) => {
   try {
     const { user } = req.params;
