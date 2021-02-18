@@ -8,7 +8,7 @@ A node based API that generates your Github contribution streak. It also shows t
 
 ## Demo
 
-<img src="/Images/Demo.png">
+<img src="./Images/Demo.png">
 
 #
 
@@ -17,10 +17,18 @@ A node based API that generates your Github contribution streak. It also shows t
 To quickly add this to your readme just add this code
 
 ```
-<img src="https://github-streak.herokuapp.com/{YOUR_GITHUB_USERNAME}" alt="Your name" />
+<img src="https://github-streak.herokuapp.com/{YOUR_GITHUB_USERNAME}?theme={THEME_NAME}" alt="Your name" />
 ```
 
-Although I will still suggest custom hosting as this is hosted with free heroku service and can stop working specially after 23 days of the month.(why 23? Ask me somewhere...)
+- theme parameter is optional and can be ignored. By default you will get the `dark` theme.
+  <img src="./Images/dark.jpg">
+- For all theme support check [this.](./docs/themes/README.md). List of themes is as per below
+  - dark(default)
+  - light
+  - highcontrast(recomended)
+  - radical
+  - buefy
+- Although I will still suggest custom hosting as this is hosted with free heroku service and can stop working specially after 23 days of the month.(why 23? Ask me somewhere...)
 
 #
 
@@ -68,9 +76,9 @@ npm start
 
 ## TODO
 
-- add custom theme support
-- add PR/ISSUE counter
-- Make it for whole lifetime rather then 2 years
+- [x] add custom theme support
+- [ ] add PR/ISSUE counter
+- [ ] Make it for whole lifetime rather then 2 years
 
 #
 
