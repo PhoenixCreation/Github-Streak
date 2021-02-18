@@ -210,6 +210,28 @@ app.get("/:user", async (req, res) => {
         width="535px"
         height="195px"
       >
+        <style>
+        @keyframes crntstreak {
+          0%{
+            font-size: 3px;
+            opacity:0.2;
+          }80%{
+            font-size: 40px;
+            opacity:1;
+          }100%{
+            font-size: 34px;
+            opacity:1;
+          }
+        }
+        @keyframes fadein{
+          0%{
+            opacity: 0;
+          }
+          100%{
+            opacity: 1;
+          }
+        }
+        </style>
         <defs>
           <clipPath id="_clipPath_OZGVUqgkTHHpPTYeqOmK3uLgktRVSwWw">
             <rect width="550" height="195" />
@@ -232,7 +254,7 @@ app.get("/:user", async (req, res) => {
                 dominant-baseline="middle"
                 stroke-width="0"
                 text-anchor="middle"
-                style="fill: ${color1}; font-weight: 700; font-size: 28px"
+                style="fill: ${color1}; font-weight: 700; font-size: 28px; opacity: 0; animation: fadein 0.5s linear forwards 0.6s;"
               >
                 ${data.totalContributions}
               </text>
@@ -252,6 +274,7 @@ app.get("/:user", async (req, res) => {
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
                   font-size: 14px;
+                  opacity: 0; animation: fadein 0.5s linear forwards 0.7s;
                 "
               >
                 Total Contributions
@@ -268,10 +291,11 @@ app.get("/:user", async (req, res) => {
                 text-anchor="middle"
                 style="
                   fill: ${color2};
-                  font-weight: 700;
+                  font-weight: 400;
                   font-size: 12px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
+                  opacity: 0; animation: fadein 0.5s linear forwards 0.8s;
                 "
               >
                 Last two years
@@ -288,7 +312,7 @@ app.get("/:user", async (req, res) => {
                 dominant-baseline="middle"
                 stroke-width="0"
                 text-anchor="middle"
-                style="fill: ${maincolor}; font-weight: 700; font-size: 34px"
+                style="fill: ${maincolor}; font-weight: 700; font-size: 34px; animation: crntstreak 0.6s linear forwards"
               >
                 ${data.currentStreak.streak}
               </text>
@@ -307,6 +331,7 @@ app.get("/:user", async (req, res) => {
                   font-weight: 700;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
+                    opacity: 0; animation: fadein 0.5s linear forwards 0.9s;
                 "
               >
                 Current Streak
@@ -326,6 +351,7 @@ app.get("/:user", async (req, res) => {
                   font-size: 14px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
+                    opacity: 0; animation: fadein 0.5s linear forwards 0.9s;
                 "
               >
                 ${data.currentStreak.startDate} ~ ${data.currentStreak.endDate}
@@ -344,10 +370,10 @@ app.get("/:user", async (req, res) => {
               cy="71"
               r="40"
               mask="url(#cut-off-area)"
-              style="fill: none; stroke: ${ringcolor}; stroke-width: 5"
+              style="fill: none; stroke: ${ringcolor}; stroke-width: 5; opacity: 0; animation: fadein 0.5s linear forwards 0.4s;"
             ></circle>
             <!-- fire icon -->
-            <g>
+            <g style="opacity: 0; animation: fadein 0.5s linear forwards 0.6s;">
               <path
                 d=" M 235.5 19.5 L 259.5 19.5 L 259.5 43.5 L 235.5 43.5 L 235.5 19.5 Z "
                 fill="none"
@@ -365,7 +391,7 @@ app.get("/:user", async (req, res) => {
               />
             </g>
           </g>
-          <g style="isolation: isolate">
+          <g style="isolation: isolate;">
             <!-- Longest Streak Big Number -->
             <g transform="translate(350,48)">
               <rect width="163" height="50" stroke="none" fill="none"></rect>
@@ -375,7 +401,7 @@ app.get("/:user", async (req, res) => {
                 dominant-baseline="middle"
                 stroke-width="0"
                 text-anchor="middle"
-                style="fill: ${color1}; font-weight: 700; font-size: 28px"
+                style="fill: ${color1}; font-weight: 700; font-size: 28px; opacity: 0; animation: fadein 0.5s linear forwards 1.2s;"
               >
                 ${data.highestStreak.streak}
               </text>
@@ -395,6 +421,7 @@ app.get("/:user", async (req, res) => {
                   font-size: 14px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
+                    opacity: 0; animation: fadein 0.5s linear forwards 1.3s;
                 "
               >
                 Longest Streak
@@ -415,6 +442,7 @@ app.get("/:user", async (req, res) => {
                   font-size: 12px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
+                    opacity: 0; animation: fadein 0.5s linear forwards 1.4s;
                 "
               >
                 ${data.highestStreak.startDate} ~ ${data.highestStreak.endDate}
