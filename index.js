@@ -134,17 +134,40 @@ const getCount = async (username) => {
 const app = express();
 
 const themes = {
-  dark: {
+  highcontrast: {
     fontcolor1: "white",
     fontcolor2: "grey",
+    maincolor: "white",
     ringcolor: "orange",
     background: "black",
   },
   light: {
     fontcolor1: "black",
     fontcolor2: "grey",
+    maincolor: "black",
     ringcolor: "orange",
     background: "aliceblue",
+  },
+  dark: {
+    fontcolor1: "white",
+    fontcolor2: "grey",
+    maincolor: "white",
+    ringcolor: "orange",
+    background: "#151515",
+  },
+  radical: {
+    fontcolor1: "#fe428e",
+    fontcolor2: "#a9fef7",
+    maincolor: "#f8d847",
+    ringcolor: "#fe428e",
+    background: "#151515",
+  },
+  buefy: {
+    fontcolor1: "#7957d5",
+    fontcolor2: "#000",
+    maincolor: "#ff3860",
+    ringcolor: "#7957d5;",
+    background: "#fff",
   },
 };
 
@@ -167,6 +190,7 @@ app.get("/:user", async (req, res) => {
     }
     const color1 = themes[theme].fontcolor1;
     const color2 = themes[theme].fontcolor2;
+    const maincolor = themes[theme].maincolor;
     const ringcolor = themes[theme].ringcolor;
     const background = themes[theme].background;
     getCount(user)
@@ -258,7 +282,7 @@ app.get("/:user", async (req, res) => {
                 dominant-baseline="middle"
                 stroke-width="0"
                 text-anchor="middle"
-                style="fill: ${color1}; font-weight: 700; font-size: 34px"
+                style="fill: ${maincolor}; font-weight: 700; font-size: 34px"
               >
                 ${data.currentStreak.streak}
               </text>
@@ -273,7 +297,7 @@ app.get("/:user", async (req, res) => {
                 stroke-width="0"
                 text-anchor="middle"
                 style="
-                  fill: ${ringcolor};
+                  fill: ${maincolor};
                   font-weight: 700;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
