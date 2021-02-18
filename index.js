@@ -133,6 +133,21 @@ const getCount = async (username) => {
 
 const app = express();
 
+const themes = {
+  dark: {
+    fontcolor1: "white",
+    fontcolor2: "grey",
+    ringcolor: "orange",
+    background: "black",
+  },
+  light: {
+    fontcolor1: "black",
+    fontcolor2: "grey",
+    ringcolor: "orange",
+    background: "aliceblue",
+  },
+};
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
@@ -146,6 +161,14 @@ app.listen(PORT, () =>
 app.get("/:user", async (req, res) => {
   try {
     const { user } = req.params;
+    var { theme } = req.query;
+    if (!themes[theme]) {
+      theme = "dark";
+    }
+    const color1 = themes[theme].fontcolor1;
+    const color2 = themes[theme].fontcolor2;
+    const ringcolor = themes[theme].ringcolor;
+    const background = themes[theme].background;
     getCount(user)
       .then((data) => {
         var svg = `
@@ -153,8 +176,8 @@ app.get("/:user", async (req, res) => {
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         style="isolation: isolate"
-        viewBox="0 0 550 195"
-        width="550px"
+        viewBox="0 0 535 195"
+        width="535px"
         height="195px"
       >
         <defs>
@@ -166,7 +189,8 @@ app.get("/:user", async (req, res) => {
           <g style="isolation: isolate">
             <path
               d="M 4.5 0 L 530.5 0 C 532.984 0 535 2.016 535 4.5 L 535 190.5 C 535 192.984 532.984 195 530.5 195 L 4.5 195 C 2.016 195 0 192.984 0 190.5 L 0 4.5 C 0 2.016 2.016 0 4.5 0 Z"
-            />
+              style="fill: ${background};stroke: black"
+              />
           </g>
           <g style="isolation: isolate">
             <!-- Total Contributions Big Number -->
@@ -178,7 +202,7 @@ app.get("/:user", async (req, res) => {
                 dominant-baseline="middle"
                 stroke-width="0"
                 text-anchor="middle"
-                style="fill: #fff; font-weight: 700; font-size: 28px"
+                style="fill: ${color1}; font-weight: 700; font-size: 28px"
               >
                 ${data.totalContributions}
               </text>
@@ -193,7 +217,7 @@ app.get("/:user", async (req, res) => {
                 stroke-width="0"
                 text-anchor="middle"
                 style="
-                  fill: #fff;
+                  fill: ${color1};
                   font-weight: 400;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
@@ -213,7 +237,7 @@ app.get("/:user", async (req, res) => {
                 stroke-width="0"
                 text-anchor="middle"
                 style="
-                  fill: grey;
+                  fill: ${color2};
                   font-weight: 700;
                   font-size: 12px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
@@ -234,7 +258,7 @@ app.get("/:user", async (req, res) => {
                 dominant-baseline="middle"
                 stroke-width="0"
                 text-anchor="middle"
-                style="fill: white; font-weight: 700; font-size: 34px"
+                style="fill: ${color1}; font-weight: 700; font-size: 34px"
               >
                 ${data.currentStreak.streak}
               </text>
@@ -249,7 +273,7 @@ app.get("/:user", async (req, res) => {
                 stroke-width="0"
                 text-anchor="middle"
                 style="
-                  fill: orange;
+                  fill: ${ringcolor};
                   font-weight: 700;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
@@ -268,7 +292,7 @@ app.get("/:user", async (req, res) => {
                 stroke-width="0"
                 text-anchor="middle"
                 style="
-                  fill: grey;
+                  fill: ${color2};
                   font-size: 14px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
                     sans-serif;
@@ -290,7 +314,7 @@ app.get("/:user", async (req, res) => {
               cy="71"
               r="40"
               mask="url(#cut-off-area)"
-              style="fill: none; stroke: orange; stroke-width: 5"
+              style="fill: none; stroke: ${ringcolor}; stroke-width: 5"
             ></circle>
             <!-- fire icon -->
             <g>
@@ -321,7 +345,7 @@ app.get("/:user", async (req, res) => {
                 dominant-baseline="middle"
                 stroke-width="0"
                 text-anchor="middle"
-                style="fill: #fff; font-weight: 700; font-size: 28px"
+                style="fill: ${color1}; font-weight: 700; font-size: 28px"
               >
                 ${data.highestStreak.streak}
               </text>
@@ -336,7 +360,7 @@ app.get("/:user", async (req, res) => {
                 stroke-width="0"
                 text-anchor="middle"
                 style="
-                  fill: #fff;
+                  fill: ${color1};
                   font-weight: 400;
                   font-size: 14px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
@@ -356,7 +380,7 @@ app.get("/:user", async (req, res) => {
                 stroke-width="0"
                 text-anchor="middle"
                 style="
-                  fill: grey;
+                  fill: ${color2};
                   font-weight: 400;
                   font-size: 12px;
                   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
