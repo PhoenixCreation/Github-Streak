@@ -452,6 +452,7 @@ app.get("/:user", async (req, res) => {
         </g>
       </svg>`;
         res.header("Content-Type", "image/svg+xml");
+        res.header("Cache-Control", "no-store,max-age=0");
         res.status(200).send(svg);
       })
       .catch((error) => {
