@@ -451,7 +451,9 @@ app.get("/:user", async (req, res) => {
           </g>
         </g>
       </svg>`;
+        // set the header to the type image...
         res.header("Content-Type", "image/svg+xml");
+        // set the caching to no-store and max-age=0 so it refreshes every time...
         res.header("Cache-Control", "no-store,max-age=0");
         res.status(200).send(svg);
       })
